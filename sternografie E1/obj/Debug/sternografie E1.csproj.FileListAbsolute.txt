@@ -9,3 +9,14 @@ C:\Users\wpiso\source\repos\sternografie E1\sternografie E1\obj\Debug\sternograf
 C:\Users\wpiso\source\repos\sternografie E1\sternografie E1\obj\Debug\sternografie E1.exe
 C:\Users\wpiso\source\repos\sternografie E1\sternografie E1\obj\Debug\sternografie E1.pdb
 C:\Users\wpiso\source\repos\sternografie E1\sternografie E1\obj\Debug\sternografie_E1.Stenographer.resources
+C:\Users\wpiso\source\repos\sternografie-E1\sternografie E1\bin\Debug\sternografie E1.exe.config
+C:\Users\wpiso\source\repos\sternografie-E1\sternografie E1\bin\Debug\sternografie E1.exe
+C:\Users\wpiso\source\repos\sternografie-E1\sternografie E1\bin\Debug\sternografie E1.pdb
+C:\Users\wpiso\source\repos\sternografie-E1\sternografie E1\obj\Debug\sternografie E1.csproj.AssemblyReference.cache
+C:\Users\wpiso\source\repos\sternografie-E1\sternografie E1\obj\Debug\sternografie E1.csproj.SuggestedBindingRedirects.cache
+C:\Users\wpiso\source\repos\sternografie-E1\sternografie E1\obj\Debug\sternografie_E1.Stenographer.resources
+C:\Users\wpiso\source\repos\sternografie-E1\sternografie E1\obj\Debug\sternografie_E1.Properties.Resources.resources
+C:\Users\wpiso\source\repos\sternografie-E1\sternografie E1\obj\Debug\sternografie E1.csproj.GenerateResource.cache
+C:\Users\wpiso\source\repos\sternografie-E1\sternografie E1\obj\Debug\sternografie E1.csproj.CoreCompileInputs.cache
+C:\Users\wpiso\source\repos\sternografie-E1\sternografie E1\obj\Debug\sternografie E1.exe
+C:\Users\wpiso\source\repos\sternografie-E1\sternografie E1\obj\Debug\sternografie E1.pdb
