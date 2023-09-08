@@ -27,6 +27,7 @@ namespace sternografie_E1
 
         private void ImageUploadBtn_Click(object sender, EventArgs e)
         {
+            //upload image from local file
             ofd.ShowDialog();
             string filePath = ofd.FileName;
             imageLoaderPb.ImageLocation = filePath;
@@ -44,6 +45,7 @@ namespace sternografie_E1
             }
             else
             {
+                //size check (checks the size of the image against the size of the secret text)
                 double textsize = (8.0 * ((imageLoaderPb.Height * (imageLoaderPb.Width / 3) * 3) / 3 - 1)) / 1024;
                 string messageText = secretTextTbx.Text;
                 double textlength = System.Text.ASCIIEncoding.ASCII.GetByteCount(messageText);
