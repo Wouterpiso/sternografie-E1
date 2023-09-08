@@ -24,6 +24,7 @@ namespace sternografie_E1
             if (secretTextTbx.Text == "Write your secret text here...")
             {
                 secretTextTbx.Text = "";
+                secretTextTbx.ForeColor = Color.Black;
             }
         }
 
@@ -128,15 +129,6 @@ namespace sternografie_E1
                     }
                 }
                 outputLb.Text = msg;
-                if (outputLb.Text == "")
-                {
-                    MessageBox.Show("No data hidden in the image");
-                }
-
-                else
-                {
-                    MessageBox.Show(" Image Decoded Successfully.");
-                }
             }
         }
 
