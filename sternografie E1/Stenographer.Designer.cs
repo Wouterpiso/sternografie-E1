@@ -31,12 +31,11 @@
             this.imageUploadBtn = new System.Windows.Forms.Button();
             this.imageLoaderPb = new System.Windows.Forms.PictureBox();
             this.backgroundPnl = new System.Windows.Forms.Panel();
-            this.keyTbx = new System.Windows.Forms.TextBox();
+            this.outputLb = new System.Windows.Forms.Label();
             this.secretTextTbx = new System.Windows.Forms.TextBox();
             this.encodeBtn = new System.Windows.Forms.Button();
             this.decodeBtn = new System.Windows.Forms.Button();
             this.ofd = new System.Windows.Forms.OpenFileDialog();
-            this.outputLb = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imageLoaderPb)).BeginInit();
             this.backgroundPnl.SuspendLayout();
             this.SuspendLayout();
@@ -64,7 +63,6 @@
             // 
             this.backgroundPnl.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.backgroundPnl.Controls.Add(this.outputLb);
-            this.backgroundPnl.Controls.Add(this.keyTbx);
             this.backgroundPnl.Controls.Add(this.secretTextTbx);
             this.backgroundPnl.Controls.Add(this.encodeBtn);
             this.backgroundPnl.Controls.Add(this.decodeBtn);
@@ -74,17 +72,14 @@
             this.backgroundPnl.Size = new System.Drawing.Size(230, 450);
             this.backgroundPnl.TabIndex = 2;
             // 
-            // keyTbx
+            // outputLb
             // 
-            this.keyTbx.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.keyTbx.Location = new System.Drawing.Point(40, 237);
-            this.keyTbx.Multiline = true;
-            this.keyTbx.Name = "keyTbx";
-            this.keyTbx.Size = new System.Drawing.Size(130, 50);
-            this.keyTbx.TabIndex = 4;
-            this.keyTbx.Tag = "";
-            this.keyTbx.Text = "Write the key here to decode...";
-            this.keyTbx.MouseClick += new System.Windows.Forms.MouseEventHandler(this.keyTbx_MouseClick);
+            this.outputLb.BackColor = System.Drawing.SystemColors.Control;
+            this.outputLb.Location = new System.Drawing.Point(40, 290);
+            this.outputLb.Name = "outputLb";
+            this.outputLb.Size = new System.Drawing.Size(130, 151);
+            this.outputLb.TabIndex = 5;
+            this.outputLb.Text = "output for the secret text.";
             // 
             // secretTextTbx
             // 
@@ -110,22 +105,13 @@
             // 
             // decodeBtn
             // 
-            this.decodeBtn.Location = new System.Drawing.Point(40, 293);
+            this.decodeBtn.Location = new System.Drawing.Point(40, 237);
             this.decodeBtn.Name = "decodeBtn";
             this.decodeBtn.Size = new System.Drawing.Size(130, 50);
             this.decodeBtn.TabIndex = 1;
             this.decodeBtn.Text = "Decode uploaded image";
             this.decodeBtn.UseVisualStyleBackColor = true;
             this.decodeBtn.Click += new System.EventHandler(this.decodeBtn_Click);
-            // 
-            // outputLb
-            // 
-            this.outputLb.BackColor = System.Drawing.SystemColors.Control;
-            this.outputLb.Location = new System.Drawing.Point(40, 350);
-            this.outputLb.Name = "outputLb";
-            this.outputLb.Size = new System.Drawing.Size(130, 91);
-            this.outputLb.TabIndex = 5;
-            this.outputLb.Text = "output: Key when encoding and the secret text when decoding.";
             // 
             // Stenographer
             // 
@@ -152,7 +138,6 @@
         private System.Windows.Forms.Button decodeBtn;
         private System.Windows.Forms.TextBox secretTextTbx;
         private System.Windows.Forms.OpenFileDialog ofd;
-        private System.Windows.Forms.TextBox keyTbx;
         private System.Windows.Forms.Label outputLb;
     }
 }

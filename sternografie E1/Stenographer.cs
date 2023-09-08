@@ -4,9 +4,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace sternografie_E1
 {
@@ -55,11 +57,87 @@ namespace sternografie_E1
                 {
                     MessageBox.Show("Image cannot save text more than" + textsize + "KB");
                 }
+                else
+                {
+                    Bitmap img = new Bitmap(imageLoaderPb.Image);
+                    for (int width = 0; width < imageLoaderPb.Width; width++)
+                    {
+                        for (int height = 0; height < imageLoaderPb.Height; height++)
+                        {
+                            Color pixel = img.GetPixel(width, height);
+                            if (width < 1 && height < secretTextTbx.TextLength)
+                            {
+                                Console.WriteLine("R= [" + width + "][" + height + "]=" + pixel.R);
+                                Console.WriteLine("G= [" + width + "][" + height + "]=" + pixel.G);
+                                Console.WriteLine("B= [" + width + "][" + height + "]=" + pixel.B);
+
+                                char letter = Convert.ToChar(secretTextTbx.Text.Substring(height, 1));
+                                int value = Convert.ToInt32(letter);
+                                Console.WriteLine("letter :" + letter + " value :" + value);
+                                img.SetPixel(width, height, Color.FromArgb(pixel.R, pixel.G, value));
+                            }
+                            if (width == img.Width - 1 && height == img.Height - 1)
+                            {
+                                img.SetPixel(width, height, Color.FromArgb(pixel.R, pixel.G, secretTextTbx.TextLength));
+                            }
+                        }
+                    }
+                    SaveFileDialog saveFile = new SaveFileDialog();
+                    saveFile.Filter = "Image Files (*.png) | *.png";
+                    if (saveFile.ShowDialog() == DialogResult.OK)
+                    {
+                        imageLoaderPb.Text = saveFile.FileName.ToString();
+                        imageLoaderPb.ImageLocation = imageLoaderPb.Text;
+                        img.Save(imageLoaderPb.Text);
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error: file path not valid or no file path.");
+                    }
+                }
             }
         }
         private void decodeBtn_Click(object sender, EventArgs e)
         {
+            if (imageLoaderPb.Image == null)
+            {
+                MessageBox.Show("please upload an image");
+            }
+            else
+            {
+                Bitmap img = new Bitmap(imageLoaderPb.Image);
+                String msg = "";
+                Color lastpixel = img.GetPixel(img.Width - 1, img.Height - 1);
+                int msgLength = lastpixel.B;
 
+                for (int width = 0; width < img.Width; width++)
+                {
+                    for (int height = 0; height < img.Height; height++)
+                    {
+                        Color pixel = img.GetPixel(width, height);
+                        if (width < 1 && height < msgLength)
+                        {
+                            int value = pixel.B;
+                            char c = Convert.ToChar(value);
+
+                            String letter = System.Text.Encoding.ASCII.GetString(new byte[] { Convert.ToByte(c) });
+                            Console.WriteLine("letter : " + letter + " value : " + value);
+                            msg = msg + letter;
+                        }   
+                    }
+                }
+                outputLb.Text = msg;
+                if (outputLb.Text == "")
+                {
+                    MessageBox.Show("No data hidden in the image");
+                }
+
+                else
+                {
+                    MessageBox.Show(" Image Decoded Successfully.");
+                }
+            }
         }
 
         private void keyTbx_MouseClick(object sender, MouseEventArgs e)
