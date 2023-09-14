@@ -15,7 +15,7 @@ namespace sternografie_E1
 {
     public partial class Stenographer : Form
     {
-        const int MAX_SIZE_ = 1024;
+        const int ONE_KB = 1024;
 
         public enum State
         {
@@ -60,7 +60,7 @@ namespace sternografie_E1
                 try
                 {
                     //size check (checks the size of the image against the size of the secret text)
-                    double textsize = (8.0 * ((imageLoaderPb.Height * (imageLoaderPb.Width / 3) * 3) / 3 - 1)) / 1024;
+                    double textsize = (8 * ((imageLoaderPb.Height * (imageLoaderPb.Width / 3) * 3) / 3 - 1)) / 1024;
                     string messageText = secretTextTbx.Text;
                     double textlength = System.Text.ASCIIEncoding.ASCII.GetByteCount(messageText);
                     double textlen = textlength / 1024;
