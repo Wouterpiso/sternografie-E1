@@ -8,12 +8,19 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.AxHost;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace sternografie_E1
 {
     public partial class Stenographer : Form
     {
+        public enum State
+        {
+            Hiding,
+            Filling_With_Zeros
+        };
+
         public Stenographer()
         {
             InitializeComponent();
@@ -62,6 +69,37 @@ namespace sternografie_E1
                     else
                     {
                         //encoder
+                        
+                        //all statements that are going to be used
+                        State state = State.Hiding;
+                        int charIndex = 0;
+                        int charValue = 0;
+                        long pixelElementIndex = 0;
+                        int zeros = 0;
+                        int R = 0, G = 0, B = 0;
+
+                        // make the Bitmap of the image
+                        Bitmap bmp = new Bitmap(imageLoaderPb.Image);
+
+                        // go through the rows of the image
+                        for (int height = 0;  height < bmp.Height; height++)
+                        {
+                            //go through each pixel within the row
+                            for (int width = 0; width < bmp.Width; width++)
+                            {
+                                //current pixel that is being worked on
+                                Color pixel = bmp.GetPixel(width, height);
+
+                                //for clearing the LSB
+                                R = pixel.R - pixel.R % 2;
+                                G = pixel.G - pixel.G % 2;
+                                B = pixel.B - pixel.B % 2;
+                            }
+                        }
+
+
+
+
 
                         //save the encoded image
                         SaveFileDialog saveFile = new SaveFileDialog();
