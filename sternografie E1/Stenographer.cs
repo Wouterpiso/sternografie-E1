@@ -15,6 +15,8 @@ namespace sternografie_E1
 {
     public partial class Stenographer : Form
     {
+        const int MAX_SIZE_ = 1024;
+
         public enum State
         {
             Hiding,
@@ -94,6 +96,16 @@ namespace sternografie_E1
                                 R = pixel.R - pixel.R % 2;
                                 G = pixel.G - pixel.G % 2;
                                 B = pixel.B - pixel.B % 2;
+
+                                //goes through the R then G then B
+                                for (int nmb = 0; nmb < 3; nmb++)
+                                {
+                                    //check if the program has gone through all 8 bits
+                                    if (pixelElementIndex % 8 == 0)
+                                    {
+                                        //check if 
+                                    }
+                                }
                             }
                         }
 
