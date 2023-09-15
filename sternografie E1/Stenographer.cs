@@ -26,9 +26,9 @@ namespace sternografie_E1
         public static int reverseBits(int n)
         {
             int result = 0;
-
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 7; i++)
             {
+
                 result = result * 2 + n % 2;
 
                 n /= 2;
@@ -254,7 +254,7 @@ namespace sternografie_E1
                             // can only be 0 if it is the stop character (the 8 zeros)
                             if (charValue == 0)
                             {
-                                outputLb.Text = outputLb.Text + extractedText;
+                                outputLb.Text += extractedText;
                             }
 
                             // convert the character value from int to char
@@ -266,7 +266,7 @@ namespace sternografie_E1
 
                     }
                 }
-                outputLb.Text = outputLb.Text + extractedText;
+                outputLb.Text += extractedText;
             }
         }
 
