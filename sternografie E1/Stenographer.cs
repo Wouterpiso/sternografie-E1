@@ -254,7 +254,7 @@ namespace sternografie_E1
                             // can only be 0 if it is the stop character (the 8 zeros)
                             if (charValue == 0)
                             {
-                                outputLb.Text = extractedText;
+                                outputLb.Text = outputLb.Text + extractedText;
                             }
 
                             // convert the character value from int to char
@@ -266,7 +266,7 @@ namespace sternografie_E1
 
                     }
                 }
-                outputLb.Text = extractedText;
+                outputLb.Text = outputLb.Text + extractedText;
             }
         }
 
