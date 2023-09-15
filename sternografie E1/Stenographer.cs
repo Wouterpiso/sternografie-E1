@@ -79,6 +79,7 @@ namespace sternografie_E1
                         long pixelElementIndex = 0;
                         int zeros = 0;
                         int R = 0, G = 0, B = 0;
+                        Image img = null;
 
                         // make the Bitmap of the image
                         Bitmap bmp = new Bitmap(imageLoaderPb.Image);
@@ -103,7 +104,40 @@ namespace sternografie_E1
                                     //check if the program has gone through all 8 bits
                                     if (pixelElementIndex % 8 == 0)
                                     {
-                                        //check if 
+                                        //check if the whole process has finished
+                                        if (state == State.Filling_With_Zeros && zeros == 8)
+                                        {
+                                            //apply the last pixel on the image
+                                            if ((pixelElementIndex - 1) % 3 < 2)
+                                            {
+                                                bmp.SetPixel(width, height, Color.FromArgb(R, G, B));
+
+                                            }
+                                            img = bmp;
+                                        }
+                                        //check if all characters are hidden
+                                        if (charIndex >= messageText.Length)
+                                        {
+                                            //starts adding zero's at the end
+                                            state = State.Filling_With_Zeros;
+                                        }
+                                        else
+                                        {
+                                            //move to the next character
+                                            charValue = messageText[charIndex++];
+                                        }
+                                    }
+
+                                    // check which pixel element has the turn to hide a bit in its LSB
+                                    switch (pixelElementIndex % 3)
+                                    {
+                                        case 0:
+                                            {
+                                                if (state == State.Hiding)
+                                                {
+
+                                                }
+                                            } break;
                                     }
                                 }
                             }
