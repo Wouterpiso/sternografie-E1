@@ -23,6 +23,20 @@ namespace sternografie_E1
             Filling_With_Zeros
         };
 
+        public static int reverseBits(int n)
+        {
+            int result = 0;
+
+            for (int i = 0; i < 8; i++)
+            {
+                result = result * 2 + n % 2;
+
+                n /= 2;
+            }
+
+            return result;
+        }
+
         public Stenographer()
         {
             InitializeComponent();
@@ -230,9 +244,30 @@ namespace sternografie_E1
                         }
 
                         colorUnitIndex++;
+
+                        //check if 8 bits have been added and if so then add a character.
+                        if (colorUnitIndex % 8 == 0)
+                        {
+
+                            charValue = reverseBits(charValue);
+
+                            // can only be 0 if it is the stop character (the 8 zeros)
+                            if (charValue == 0)
+                            {
+                                outputLb.Text = extractedText;
+                            }
+
+                            // convert the character value from int to char
+                            char c = (char)charValue;
+
+                            // add the current character to the result text
+                            extractedText += c.ToString();
+                        }
+
                     }
                 }
-             }
+                outputLb.Text = extractedText;
+            }
         }
 
         private void keyTbx_MouseClick(object sender, MouseEventArgs e)
