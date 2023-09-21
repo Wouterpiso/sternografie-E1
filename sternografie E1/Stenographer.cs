@@ -72,13 +72,13 @@ namespace sternografie_E1
             else
             {
                 //size check (checks the size of the image against the size of the secret text)
-                double textsize = (8 * ((imageLoaderPb.Height * (imageLoaderPb.Width / 3) * 3) / 3 - 1)) / 1024;
+                double textSize = (8 * ((imageLoaderPb.Height * (imageLoaderPb.Width / 3) * 3) / 3 - 1)) / 1024;
                 string messageText = secretTextTbx.Text;
-                double textlength = System.Text.ASCIIEncoding.ASCII.GetByteCount(messageText);
-                double textlen = textlength / 1024;
-                if (textsize < textlen)
+                double textLength = System.Text.ASCIIEncoding.ASCII.GetByteCount(messageText);
+                double textLen = textLength / 1024;
+                if (textSize < textLen)
                 {
-                    MessageBox.Show("Image cannot save text more than" + textsize + "KB");
+                    MessageBox.Show("Image cannot save text more than" + textSize + "KB");
                 }
                 else
                 {
