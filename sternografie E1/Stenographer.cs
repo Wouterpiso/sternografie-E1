@@ -26,9 +26,9 @@ namespace sternografie_E1
         public static int reverseBits(int n)
         {
             int result = 0;
-            for (int i = 0; i < 7; i++)
-            {
 
+            for (int i = 0; i < 8; i++)
+            {
                 result = result * 2 + n % 2;
 
                 n /= 2;
@@ -210,12 +210,12 @@ namespace sternografie_E1
                 //decoder
 
                 //all statements that are going to be used
-                int colorUnitIndex = 0;
-                int charValue = 0;
                 Bitmap bmp = new Bitmap(imageLoaderPb.Image);
+                Color lastPixel = bmp.GetPixel(bmp.Width - 1, bmp.Height - 1);
+                int msgLength = lastPixel.B;
 
                 // holds the text that will be extracted from the image
-                string extractedText = String.Empty;
+                string extractedText = "";
 
                 // go through the rows of the image
                 for (int height = 0; height < bmp.Height; height++)
@@ -226,47 +226,19 @@ namespace sternografie_E1
                         //current pixel that is being worked on
                         Color pixel = bmp.GetPixel(width, height);
 
-                        switch (colorUnitIndex % 3)
+                        //convert bytes to letters
+                        if (width < 1 && height < msgLength)
                         {
-                            case 0:
-                                {
-                                    charValue = charValue * 2 + pixel.R % 2;
-                                }break;
-                            case 1:
-                                {
-                                    charValue = charValue * 2 + pixel.G % 2;
-                                }break;
-                            case 2:
-                                {
-                                    charValue = charValue * 2 + pixel.B % 2;
-                                }
-                                break;
+                            int value = pixel.B;
+                            char c = Convert.ToChar(value);
+
+                            String letter = System.Text.Encoding.ASCII.GetString(new byte[] { Convert.ToByte(c) });
+                            extractedText = extractedText + letter;
+
                         }
-
-                        colorUnitIndex++;
-
-                        //check if 8 bits have been added and if so then add a character.
-                        if (colorUnitIndex % 8 == 0)
-                        {
-
-                            charValue = reverseBits(charValue);
-
-                            // can only be 0 if it is the stop character (the 8 zeros)
-                            if (charValue == 0)
-                            {
-                                outputLb.Text += extractedText;
-                            }
-
-                            // convert the character value from int to char
-                            char c = (char)charValue;
-
-                            // add the current character to the result text
-                            extractedText += c.ToString();
-                        }
-
                     }
                 }
-                outputLb.Text += extractedText;
+                outputLb.Text = extractedText;
             }
         }
 

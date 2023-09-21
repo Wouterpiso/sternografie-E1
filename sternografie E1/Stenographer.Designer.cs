@@ -80,7 +80,6 @@
             this.outputLb.Size = new System.Drawing.Size(130, 151);
             this.outputLb.TabIndex = 5;
             this.outputLb.Text = "output for the secret text.";
-            this.outputLb.UseCompatibleTextRendering = true;
             // 
             // secretTextTbx
             // 
